@@ -33,6 +33,7 @@
 #include <fio/port/kfio.h>
 #include <fio/port/ktime.h>
 #include <fio/port/kblock.h>
+#include <linux/string.h>
 #include <fio/port/kscsi.h>
 #include <fio/port/sched.h>
 #include <fio/port/bitops.h>
@@ -409,7 +410,7 @@ int kfio_expose_disk(kfio_disk_t *dp, char *name, int major, int disk_index,
 
     fio_bdev_ops.owner = THIS_MODULE;
 
-    strncpy(gd->disk_name, name, 32);
+    kfio_strscpy_pad(gd->disk_name, name, 32);
 
     set_capacity(gd, reported_capacity * sector_size / KERNEL_SECTOR_SIZE);
 

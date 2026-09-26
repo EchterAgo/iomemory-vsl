@@ -34,6 +34,7 @@
 #include <linux/kernel.h>
 #include <linux/kthread.h>
 #include <linux/uaccess.h>
+#include <linux/string.h>
 #include <fio/port/dbgset.h>
 #include <fio/port/kfio_config.h>
 
@@ -119,7 +120,8 @@ KFIO_EXPORT_SYMBOL(kfio_strncmp);
 
 char *kfio_strncpy(char *dst, const char *src, fio_size_t n)
 {
-    return strncpy(dst, src, n);
+    kfio_strscpy_pad(dst, src, n);
+    return dst;
 }
 KFIO_EXPORT_SYMBOL(kfio_strncpy);
 
