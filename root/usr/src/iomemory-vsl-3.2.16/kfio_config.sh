@@ -668,7 +668,7 @@ else
 all: modules
 
 modules clean:
-	\$(MAKE) -C \$(KERNEL_SRC) M=\$(CURDIR) EXTRA_CFLAGS='-Wall ${extra_cflags}' \$@
+	\$(MAKE) -C \$(KERNEL_SRC) M=\$(CURDIR) ccflags-y+='-Wall ${extra_cflags}' \$@
 
 endif
 
