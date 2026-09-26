@@ -307,11 +307,11 @@ KFIOC_X_VOID_ADD_DISK()
     local test_flag="$1"
     local test_code='
 #include <linux/blkdev.h>
-int kfioc_check_void_add_disk(void);
-int kfioc_check_void_add_disk(void)
+void kfioc_check_void_add_disk(void);
+void kfioc_check_void_add_disk(void)
 {
   struct gendisk *gd = NULL;
-  return add_disk(gd)
+  add_disk(gd);
 }
 
 '
